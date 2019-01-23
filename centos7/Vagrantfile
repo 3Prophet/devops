@@ -1,0 +1,12 @@
+Vagrant.configure("2") do |config|
+    config.vm.define "centosSonar" do |machine|
+        machine.vm.box = "centos/7"
+        machine.vm.network "private_network", ip: "192.0.0.2"
+        machine.vm.provision "shell", path: "gerrit.sh"
+	machine.vm.provider :virtualbox do |v|
+	    v.gui = false
+            v.name = "centosSonar"
+            v.memory = "2048" # for SonarQube
+	end
+    end
+end
