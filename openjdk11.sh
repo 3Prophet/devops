@@ -1,9 +1,9 @@
 !#/bin/bash
-#yum update -y
+yum update -y
 yum install unzip -y
 
 TEMP_DIR="/home/vagrant/temp_openjdk"
-INSTALL_DIR="/usr/local"
+INSTALL_DIR="/opt"
 PROFILE="/etc/profile.d/jdk11.sh"
 DISTRO="/vagrant/software"
 FJDK="jdk-11.0.2"
@@ -23,7 +23,7 @@ done
 
 cd $TEMP_DIR
 
-yum --nogpgcheck localinstall $BUILDER_RPM -y
+#yum --nogpgcheck localinstall $BUILDER_RPM -y
 
 #curl -O https://download.java.net/java/GA/jdk11/13/GPL/openjdk-11.0.1_linux-x64_bin.tar.gz
 # Unarchiving open JDK 11, installing it and setting the paths
@@ -41,7 +41,8 @@ echo "export PATH_TO_FX=${INSTALL_DIR}/${FJFX}/lib" >> $PROFILE
 # Updating environment variables
 source $PROFILE
 
-#yum --nogpgcheck localinstall $BUILDER_RPM -y
+
+yum --nogpgcheck localinstall $BUILDER_RPM -y
 
 tar zxvf $ECLIPSE
 
@@ -49,11 +50,14 @@ tar zxvf $ECLIPSE
 #rm -rf $TEMP_DIR
 
 yum install maven -y
+yum install git -y
 
 git config --global user.name "Dmitry Logvinovich"
 git config --global user.email dlogvinovich@yahoo.com
 
 
-
-#--module-path /opt/java/javafx-sdk-11.0.2/lib
+default vm arguments
+#--module-path /opt/javafx-sdk-11.0.2/lib
 #--add-modules=javafx.controls,javafx.fxml
+
+e(fx)eclipse

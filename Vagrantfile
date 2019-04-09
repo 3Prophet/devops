@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
-    config.vm.box = "narethim/centos7-desktop"
-    config.vm.box_version = "0.01"
+    config.vm.box = "pbarriscale/centos7-gui"
+    config.vm.box_version = "1.0.0"
     config.vm.network "private_network", ip: "192.0.0.2"
     config.vm.provision "shell", path: "openjdk11.sh"
 	config.vm.provider :virtualbox do |v|
