@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Old metadata clean up
-#yum clean all
+yum clean all
 # Epel story : https://community.nethserver.org/t/cannot-retrieve-metalink-for-repository-epel-x86-64/7061/23
-#yum --disablerepo=“epel” update nss -y
-#yum remove epel-release --disablerepo=epel -y
-#yum -y upgrade ca-certificates
-#yum -y upgrade ca-certificates --disablerepo=epel
+yum --disablerepo=“epel” update nss -y
+yum remove epel-release --disablerepo=epel -y
+yum -y upgrade ca-certificates
+yum -y upgrade ca-certificates --disablerepo=epel
 
-#yum update -y
+yum update -y
 
 
 yum install wget -y
