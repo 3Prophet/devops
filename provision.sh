@@ -12,6 +12,9 @@ yum update -y
 
 yum install wget -y
 
+yum install git -y
+git config --global core.autocrlf input
+
 INSTALL_DIR="/opt"
 DISTRO="/vagrant/software"
 PROFILE="/etc/profile.d/jdk8.sh"
@@ -58,3 +61,37 @@ fi
 
 # Installing  MYSQL WORKBENCH
 yum install mysql-workbench -y
+
+
+yum install maven -y
+
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
+yum install nodejs -y
+npm install -g @angular/cli -N
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+curl -L https://github.com/docker/machine/releases/download/v0.16.1/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine &&
+chmod +x /tmp/docker-machine &&
+sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
+
+curl -L https://github.com/docker/compose/releases/download/1.25.0-rc1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+cp /vagrant/software/vscode.repo /etc/yum.repos.d
+sudo yum install code -y
+
+# To start/stop docker service type:
+# sudo service docker start
+
+#For installing missing proect modules
+npm install -g npm-install-missing
+
+# Within your project directory: npm-install-missing
+
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+
+sudo yum localinstall google-chrome-stable_current_x86_64.rpm -y
